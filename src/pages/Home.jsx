@@ -1,16 +1,21 @@
-import rigoImageUrl from "../assets/img/rigo-baby.jpg";
-import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import ContactsList from "../components/ContactsList";
 
 export const Home = () => {
 
-  const {store, dispatch} =useGlobalReducer()
+	const navigate = useNavigate();
+
+	function handleAddNewContactClick() {
+		return navigate('/add-new-contact')
+	}
 
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-		</div>
+		<>
+			<div className="mt-5 text-end me-5">
+				<button className="btn btn-success" onClick={handleAddNewContactClick}>Add new contact</button>
+			</div>
+			<ContactsList />
+		</>
 	);
 }; 
