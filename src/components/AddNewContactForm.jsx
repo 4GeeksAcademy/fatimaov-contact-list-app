@@ -37,7 +37,7 @@ function AddNewContactForm() {
 
     return (
         <>
-            <form className="mt-5" onSubmit={handleSubmit}>
+            <form className="mt-5 mx-auto" onSubmit={handleSubmit} style={{maxWidth: 600}}>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Full Name</label>
                     <input onChange={handleChange} value={addContactInfo.name} type="text" className="form-control" id="name" aria-describedby="name" required placeholder="Enter Full Name" minLength='3' maxLength='20' />

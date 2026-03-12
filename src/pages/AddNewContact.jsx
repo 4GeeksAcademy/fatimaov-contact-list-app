@@ -6,10 +6,12 @@ function AddNewContact() {
 
     return (
         <>
-            <div className="m-5">
-                <h1 className="text-center mb-3 fw-bold">Add a new contact</h1>
+            <div className="m-2">
+                <h1 className="text-center my-5 fw-bold">Add a new contact</h1>
                 <AddNewContactForm />
-                <Link to={'/'}>or get back to contacts</Link>
+                <Link to={'/'}>
+                    <p className="text-center">or get back to contacts</p>
+                </Link>
             </div>
         </>
     )
