@@ -3,17 +3,12 @@ import { Link } from "react-router-dom";
 
 function Contact({ name, phone, email, address, id, onDeleteContact }) {
 
-    
-    function handleDeleteContactClick(e) {
-        onDeleteContact(id)
-        console.log(e.target)
-    }
 
     return (
         <>
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center mb-3">
                 <div style={{ width: 150 }}>
-                    <img src="https://cdn-icons-png.flaticon.com/512/219/219964.png" alt="profile photo" className="img-fluid" />
+                    <img src="src/assets/img/user_profile_img.png" alt="profile photo" className="img-fluid" />
                 </div>
                 <div>
                     <p className="m-0">{name}</p>
@@ -25,12 +20,11 @@ function Contact({ name, phone, email, address, id, onDeleteContact }) {
                     <Link>
                         Edit
                     </Link>
-                    
+
                     <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#modal${id}`}>
                         Launch demo modal
                     </button>
 
-                    
                     <div className="modal fade" id={`modal${id}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div className="modal-dialog">
                             <div className="modal-content">
@@ -43,7 +37,7 @@ function Contact({ name, phone, email, address, id, onDeleteContact }) {
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Oh no!</button>
-                                    <button type="button" className="btn btn-primary" onClick={handleDeleteContactClick}>Yes baby!</button>
+                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => onDeleteContact(id)}>Yes baby!</button>
                                 </div>
                             </div>
                         </div>

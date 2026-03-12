@@ -1,24 +1,25 @@
 import React from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 import { useEffect } from "react";
-import { getContacts, deleteContact } from "../api/apiService";
+import { getContacts, deleteContact, appInit } from "../api/apiService";
 import storeReducer from "../store";
 import Contact from "./Contact";
 
 function ContactsList() {
 
     const { store, dispatch } = useGlobalReducer();
-    console.log(store)
+    console.log('store update', store)
 
     useEffect(() => {
         async function loadContacts() {
+            let contactsInit = await appInit();
             dispatch({
                 type: 'GET_CONTACTS',
-                payload: { contacts: await getContacts() },
+                payload: { contacts: contactsInit },
             }
             )
         }
-        loadContacts()
+        loadContacts();
     }, [])
 
 
@@ -31,7 +32,6 @@ function ContactsList() {
             payload: { contacts: await getContacts() },
         }
         )
-
     }
 
 
@@ -51,7 +51,7 @@ function ContactsList() {
                     />
                 )
             })
-        : 'No contacts'}
+                : 'No contacts'}
         </>
     )
 }
