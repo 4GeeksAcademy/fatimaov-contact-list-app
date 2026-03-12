@@ -12,7 +12,7 @@ export const Home = () => {
 
 	return (
 		<>
-			<div className="mt-5 text-end me-5">
+			<div className="my-5 text-end me-5">
 				<button className="btn btn-success" onClick={handleAddNewContactClick}>Add new contact</button>
 			</div>
 			<ContactsList />

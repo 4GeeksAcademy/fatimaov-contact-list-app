@@ -16,8 +16,8 @@ function AddNewContactForm() {
 
     console.log(addContactInfo)
 
-    function handleChange (e) {
-        setAddContactInfo({...addContactInfo, ...{[e.target.id]: e.target.value}})
+    function handleChange(e) {
+        setAddContactInfo({ ...addContactInfo, ...{ [e.target.id]: e.target.value.trim() } })
     }
 
     function handleSubmit(e) {
@@ -40,7 +40,7 @@ function AddNewContactForm() {
             <form className="mt-5" onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Full Name</label>
-                    <input onChange={handleChange} value={addContactInfo.name} type="text" className="form-control" id="name" aria-describedby="name" required placeholder="Enter Full Name" />
+                    <input onChange={handleChange} value={addContactInfo.name} type="text" className="form-control" id="name" aria-describedby="name" required placeholder="Enter Full Name" minLength='3' maxLength='20' />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email</label>
@@ -48,7 +48,7 @@ function AddNewContactForm() {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="phone" className="form-label">Phone</label>
-                    <input onChange={handleChange} value={addContactInfo.phone} type="text" className="form-control" id="phone" required placeholder="Enter Phone" />
+                    <input onChange={handleChange} value={addContactInfo.phone} type="tel" className="form-control" id="phone" required placeholder="Enter Phone" />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="address" className="form-label">Address</label>

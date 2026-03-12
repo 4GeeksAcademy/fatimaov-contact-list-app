@@ -21,11 +21,7 @@ function ContactsList() {
         loadContacts();
     }, [])
 
-    
-
-
     async function deleteContactClick(id) {
-        console.log('delete contact function declaration', id)
         await deleteContact(id)
         dispatch({
             type: 'GET_CONTACTS',
@@ -37,7 +33,8 @@ function ContactsList() {
 
     return (
         <>
-            <h1>Contacts List</h1>
+        <div className="d-flex flex-column gap-3">
+
             {store.length !== 0 ? store.map((contact) => {
                 return (
                     <Contact
@@ -51,7 +48,8 @@ function ContactsList() {
                     />
                 )
             })
-                : 'No contacts'}
+                : 'Loading ...'}
+        </div>
         </>
     )
 }

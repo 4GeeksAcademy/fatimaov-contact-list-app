@@ -6,23 +6,39 @@ function Contact({ name, phone, email, address, id, onDeleteContact }) {
 
     return (
         <>
-            <div className="d-flex align-items-center mb-3">
-                <div style={{ width: 150 }}>
-                    <img src="src/assets/img/user_profile_img.png" alt="profile photo" className="img-fluid" />
+            <div className="d-flex border justify-content-between p-3 mx-auto" style={{ width: 750 }}>
+                <div className="d-flex align-items-center gap-3">
+                    <div className="p-3" style={{ width: 150 }}>
+                        <img src="src/assets/img/user_profile_img.png" alt="profile photo" className="img-fluid" />
+                    </div>
+                    <div>
+                        <p className="m-0 fs-5 mb-2">{name}</p>
+                        <div className="fs-6 text-secondary">
+                            <div>
+                                <i className="fa-solid fa-location-dot"></i>
+                                <span className="m-0 ms-2">{address}</span>
+                            </div>
+                            <div>
+                                <i className="fa-solid fa-phone"></i>
+                                <span className="m-0 ms-2">{phone}</span>
+                            </div>
+                            <div>
+                                <i className="fa-solid fa-envelope"></i>
+                                <span className="m-0 ms-2">{email}</span>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
                 <div>
-                    <p className="m-0">{name}</p>
-                    <p className="m-0">{address}</p>
-                    <p className="m-0">{phone}</p>
-                    <p className="m-0">{email}</p>
-                </div>
-                <div>
-                    <Link>
-                        Edit
+                    <Link to={`/edit-contact/${id}`}>
+                        <button type="button" className="btn">
+                            <i className="fa-solid fa-pencil text-black"></i>
+                        </button >
                     </Link>
 
-                    <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#modal${id}`}>
-                        Launch demo modal
+                    <button type="button" className="btn" data-bs-toggle="modal" data-bs-target={`#modal${id}`}>
+                        <i className="fa-solid fa-trash-can text-black"></i>
                     </button>
 
                     <div className="modal fade" id={`modal${id}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
