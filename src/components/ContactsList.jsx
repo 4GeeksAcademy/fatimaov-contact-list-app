@@ -12,10 +12,9 @@ function ContactsList() {
 
     useEffect(() => {
         async function loadContacts() {
-            let contactsInit = await appInit();
             dispatch({
                 type: 'GET_CONTACTS',
-                payload: { contacts: contactsInit },
+                payload: { contacts: await appInit() },
             }
             )
         }
