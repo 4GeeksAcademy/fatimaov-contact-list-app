@@ -59,7 +59,8 @@ export async function deleteContact(id) {
     }
 }
 
-export async function addContact(name, phone, email, address) {
+export async function addContact(newContact) {
+    const {name, phone, email, address} = newContact;
     const urltoFetch = `${baseUrl}/contact/agendas/${userName}/contacts`;
 
     try {
