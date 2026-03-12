@@ -33,23 +33,27 @@ function ContactsList() {
 
     return (
         <>
-        <div className="d-flex flex-column gap-3">
+            <div className="d-flex flex-column gap-3">
 
-            {store.length !== 0 ? store.map((contact) => {
-                return (
-                    <Contact
-                        key={contact.id}
-                        name={contact.name}
-                        address={contact.address}
-                        phone={contact.phone}
-                        email={contact.email}
-                        id={contact.id}
-                        onDeleteContact={deleteContactClick}
-                    />
-                )
-            })
-                : 'Loading ...'}
-        </div>
+                {store.length !== 0 ? store.map((contact) => {
+                    return (
+                        <Contact
+                            key={contact.id}
+                            name={contact.name}
+                            address={contact.address}
+                            phone={contact.phone}
+                            email={contact.email}
+                            id={contact.id}
+                            onDeleteContact={deleteContactClick}
+                        />
+                    )
+                })
+                    : (
+                        <div class="spinner-border text-primary mx-auto" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    )}
+            </div>
         </>
     )
 }
