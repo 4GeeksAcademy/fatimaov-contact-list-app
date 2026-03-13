@@ -55,7 +55,6 @@ function AddNewContactForm() {
                     <input onChange={handleChange} value={addContactInfo.address} type="text" className="form-control" id="address" required placeholder="Enter Address" />
                 </div>
                 <button type="submit" className="btn btn-primary w-100">Save</button>
-
             </form>
         </>
     )

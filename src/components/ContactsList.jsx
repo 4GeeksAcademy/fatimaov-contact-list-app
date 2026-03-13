@@ -10,6 +10,7 @@ function ContactsList() {
     const { store, dispatch } = useGlobalReducer();
     console.log('store update', store)
 
+    // Load seedData 
     useEffect(() => {
         async function loadContacts() {
             dispatch({
@@ -21,6 +22,7 @@ function ContactsList() {
         loadContacts();
     }, [])
 
+    // Delete contact
     async function deleteContactClick(id) {
         await deleteContact(id)
         dispatch({
@@ -34,7 +36,6 @@ function ContactsList() {
     return (
         <>
             <div className="d-flex flex-column gap-3">
-
                 {store.length !== 0 ? store.map((contact) => {
                     return (
                         <Contact
