@@ -9,7 +9,7 @@ function Contact({ name, phone, email, address, id, onDeleteContact }) {
             <div className="d-flex border justify-content-between p-3 mx-auto" style={{ width: 750 }}>
                 <div className="d-flex align-items-center gap-3">
                     <div className="p-3" style={{ width: 150 }}>
-                        <img src="src/assets/img/user_profile_img.png" alt="profile photo" className="img-fluid" />
+                        <img src="https://freesvg.org/img/abstract-user-flat-4.png" alt="profile photo" className="img-fluid" />
                     </div>
                     <div>
                         <p className="m-0 fs-5 mb-2">{name}</p>
