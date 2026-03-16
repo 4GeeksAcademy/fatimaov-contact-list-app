@@ -14,10 +14,8 @@ function AddNewContactForm() {
         address: '',
     })
 
-    console.log(addContactInfo)
-
     function handleChange(e) {
-        setAddContactInfo({ ...addContactInfo, ...{ [e.target.id]: e.target.value.trim() } })
+        setAddContactInfo({ ...addContactInfo, ...{ [e.target.id]: e.target.value } })
     }
 
     function handleSubmit(e) {

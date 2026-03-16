@@ -8,7 +8,7 @@ export default function storeReducer(store, action = {}) {
 
       const { contacts } = action.payload;
 
-    return contacts ? contacts : [];
+    return contacts.length !== 0 ? contacts : null;
 
     default:
       throw Error('Unknown action.');

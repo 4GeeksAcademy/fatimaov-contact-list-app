@@ -8,7 +8,6 @@ import Contact from "./Contact";
 function ContactsList() {
 
     const { store, dispatch } = useGlobalReducer();
-    console.log('store update', store)
 
     // Load seedData 
     useEffect(() => {
@@ -36,7 +35,7 @@ function ContactsList() {
     return (
         <>
             <div className="d-flex flex-column gap-3">
-                {store.length !== 0 ? store.map((contact) => {
+                {store ? store.map((contact) => {
                     return (
                         <Contact
                             key={contact.id}
@@ -50,8 +49,8 @@ function ContactsList() {
                     )
                 })
                     : (
-                        <div className="spinner-border text-primary mx-auto" role="status">
-                            <span className="visually-hidden">Loading...</span>
+                        <div class="alert alert-warning m-5" role="alert">
+                            No contacts available
                         </div>
                     )}
             </div>

@@ -29,10 +29,10 @@ const seedData = [
 
 
 export async function getContacts() {
-    const urltoFetch = `${baseUrl}/contact/agendas/${userName}/contacts`;
+    const urlToFetch = `${baseUrl}/contact/agendas/${userName}/contacts`;
 
     try {
-        const response = await fetch(urltoFetch);
+        const response = await fetch(urlToFetch);
         const responseJson = await response.json();
         const data = responseJson.contacts;
         return data;
@@ -42,10 +42,10 @@ export async function getContacts() {
 }
 
 export async function deleteContact(id) {
-    const urltoFetch = `${baseUrl}/contact/agendas/${userName}/contacts/${id}`;
+    const urlToFetch = `${baseUrl}/contact/agendas/${userName}/contacts/${id}`;
 
     try {
-        const response = await fetch(urltoFetch, {
+        const response = await fetch(urlToFetch, {
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json"
@@ -60,17 +60,17 @@ export async function deleteContact(id) {
 }
 
 export async function addContact(newContact) {
-    const {name, phone, email, address} = newContact;
-    const urltoFetch = `${baseUrl}/contact/agendas/${userName}/contacts`;
+    const { name, phone, email, address } = newContact;
+    const urlToFetch = `${baseUrl}/contact/agendas/${userName}/contacts`;
 
     try {
-        const response = await fetch(urltoFetch, {
+        const response = await fetch(urlToFetch, {
             method: 'POST',
             body: JSON.stringify({
-                name: name,
-                phone: phone,
-                email: email,
-                address: address,
+                name: name.trim(),
+                phone: phone.trim(),
+                email: email.trim(),
+                address: address.trim(),
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -82,12 +82,35 @@ export async function addContact(newContact) {
     }
 }
 
+export async function editContact(contact) {
+    const { name, phone, email, address, id } = contact;
+    const urlToFetch = `${baseUrl}/contact/agendas/${userName}/contacts/${id}`;
+
+    try {
+        await fetch(urlToFetch, {
+            method: 'PUT',
+            body: JSON.stringify({
+                name: name.trim(),
+                phone: phone.trim(),
+                email: email.trim(),
+                address: address.trim(),
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+    } catch (error) {
+        console.error('Put contact', error)
+    }
+}
+
 async function addSeedData(seedData) {
-    const urltoFetch = `${baseUrl}/contact/agendas/${userName}/contacts`;
+    const urlToFetch = `${baseUrl}/contact/agendas/${userName}/contacts`;
 
     for (let i = 0; i < seedData.length; i++) {
         try {
-            const response = await fetch(urltoFetch, {
+            const response = await fetch(urlToFetch, {
                 method: 'POST',
                 body: JSON.stringify(seedData[i]),
                 headers: {
@@ -104,9 +127,9 @@ async function addSeedData(seedData) {
 }
 
 export async function addUser() {
-    const urltoFetch = `${baseUrl}/contact/agendas/${userName}`;
+    const urlToFetch = `${baseUrl}/contact/agendas/${userName}`;
     try {
-        await fetch(urltoFetch, {
+        await fetch(urlToFetch, {
             method: 'POST',
             body: '',
             headers: {
@@ -120,9 +143,9 @@ export async function addUser() {
 }
 
 export async function getUser() {
-    const urltoFetch = `${baseUrl}/contact/agendas/${userName}`;
+    const urlToFetch = `${baseUrl}/contact/agendas/${userName}`;
     try {
-        const response = await fetch(urltoFetch)
+        const response = await fetch(urlToFetch)
         return response.ok
 
     } catch (error) {
@@ -132,11 +155,11 @@ export async function getUser() {
 
 export async function appInit() {
     const checkUser = await getUser()
-    if(!checkUser) {
+    if (!checkUser) {
         await addUser();
     }
     let checkData = await getContacts();
-    if(checkData.length === 0) {
+    if (checkData.length === 0) {
         await addSeedData(seedData);
     }
     checkData = await getContacts();
